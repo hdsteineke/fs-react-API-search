@@ -1,7 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [pokemon, setPokemon] = useState([]);
+  
+  useEffect(() => {
+    async function load() {
+      const rawResponse = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex');
+      const data = await rawResponse.json();
+
+      setPokemon(data.results);
+
+    }
+    load();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
