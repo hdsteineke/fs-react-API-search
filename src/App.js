@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 
@@ -11,6 +10,7 @@ function App() {
       const data = await rawResponse.json();
 
       setPokemon(data.results);
+      console.log(data.results);
 
     }
     load();
@@ -19,18 +19,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {pokemon.map((aPokemon, i) => 
+          <div key={pokemon.pokebase + i}>
+            <h3>{aPokemon.pokebase}</h3>
+            <img src={aPokemon.url_image} />
+            <p>hp: {aPokemon.hp}</p>
+            <p>type 1: {aPokemon.type_1}</p>
+            <p>type 2: {aPokemon.type_2}</p>
+          </div>
+        )}
       </header>
     </div>
   );
