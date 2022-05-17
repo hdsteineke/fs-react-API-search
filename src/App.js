@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     load();
 
-  }, [query]);
+  }, [query]); //eslint-disable-line
 
   async function handleSearch(e) {
     e.preventDefault();
